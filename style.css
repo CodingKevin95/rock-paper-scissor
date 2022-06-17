@@ -1,0 +1,82 @@
+.textcomputer span {
+    opacity: 0;
+}
+
+.textcomputer span.revealed {
+    opacity: 1;
+}
+
+.textcomputer span.green {
+    color: #27ae60;
+}
+
+#header{
+    border: 5px solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#clickstart {
+    height: auto;
+    width: 30%;
+    border-radius: 25px 25px 25px 25px;
+    background-color:#0e6dad
+}
+
+.userName {
+    position: relative;
+    top: 500px;
+    left: 45%;
+    background-color: #27ae60;
+}
+
+/**************************************************************/
+body {
+    background: #3498db;
+    padding: 3em;
+    border: 10px solid black;
+    font-family: 'Sora', monospace;
+}
+
+.textcomputer {
+    font-size: 25px;
+    word-spacing: 0.2em;
+    margin: 0 auto;
+    background: #fff;
+    padding: 1em;
+    border-bottom: 4px solid #0e6dad;
+    position: relative;
+    line-height: 1.2em;
+    top: 800px;
+    /* right: 150px; */
+    min-height: 175px;
+    min-width: 500px;
+    max-width: 900px;
+}
+
+.corner {
+    position:absolute;
+    width: 100px;
+    left: -95px;
+    bottom: 50%;
+    transform: rotate(5deg);
+    padding-right: 3em;
+}
+
+/* .corner {
+    position:absolute;
+    width: 100px;
+    left: 35px;
+    bottom: 95%;
+    transform: rotate(170deg);
+} */
+
+/* .corner {
+    position:absolute;
+    width: 10vw;
+    right: 2vw;
+    bottom: 0;
+    transform: translateY(80%)
+} */

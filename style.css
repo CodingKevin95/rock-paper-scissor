@@ -1,3 +1,66 @@
+:root {
+    --clr-neon: hsl(317 100% 54%);
+    --clr-bg: hsl(323 21% 16%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/******************* Title of the game ************************************/
+/*** Maybe try to make the title flicker ***/
+h1 {
+    bottom: 90%;
+    top: 5%;
+    position: absolute;
+    font-family: 'Roboto Mono', monospace;
+    color: var(--clr-neon);
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+
+    animation: blink 1.5s infinite linear alternate;
+  }
+
+  @keyframes blink{
+    60%, 70%, 79%{
+        opacity: 1;
+    } 
+    65%, 67%, 76%, 78%{
+        opacity: .2;
+    } 
+    66%, 69%, 77%{
+        opacity: 0.8;
+    } 
+
+  }
+
+  h1::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    top: 300%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    transform: perspective(1em) rotateX(40deg) scale(1.15, 0.40);
+    filter: blur(1em);
+    opacity: .7;
+  }
+
+  h1:hover,
+  h1:focus {
+    color: var(--clr-bg);
+    text-shadow: none;
+  }
+  
+  h1:hover::before,
+  h1:focus::before {
+    opacity: 0;
+  }
+
+/*******************************************************/
 .textcomputer span {
     opacity: 0;
 }
@@ -11,72 +74,776 @@
 }
 
 #header{
-    border: 5px solid green;
+    /* border: 5px solid green; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+/*********************Start button at the beginning of the game**********************************/
 
 #clickstart {
-    height: auto;
-    width: 30%;
-    border-radius: 25px 25px 25px 25px;
-    background-color:#0e6dad
+    font-family: 'Roboto Mono', monospace;
+    position: absolute;
+    top: 14%;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+  
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+  
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
 }
 
+#clickstart::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+    filter: blur(1em);
+    opacity: 0.7;
+  }
+  
+  #clickstart::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 1em 0.5em var(--clr-neon);
+    opacity: 0;
+    background-color: var(--clr-neon);
+    z-index: -1;
+    transition: opacity 100ms linear;
+  }
+  
+  #clickstart:hover,
+  #clickstart:focus {
+    color: var(--clr-bg);
+    text-shadow: none;
+  }
+  
+  #clickstart:hover::before,
+  #clickstart:focus::before {
+    opacity: 1;
+  }
+  #clickstart:hover::after,
+  #clickstart:focus::after {
+    opacity: 1;
+  }
+  
+/********************* Name input and button to continue ***********************************/
 .userName {
-    position: relative;
-    top: 500px;
-    left: 45%;
-    background-color: #27ae60;
+    font-size: 14px;
+    border-radius: 25px 25px 25px 25px;
+    font-family: 'Roboto Mono', monospace;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.13);
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+    padding: 0.25em 1em;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
 }
 
-/**************************************************************/
+/*** Work on the user input later ***/
+
+
+
+.userNameButton {
+    font-size: 14;
+    position: absolute;
+    top: 7.5%;
+    left: 90%;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: black;
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+  
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+}
+
+.userNameButton::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.25);
+    filter: blur(1em);
+    opacity: 0.7;
+  }
+
+.userNameButton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+    opacity: 0.2;
+    background-color: var(--clr-neon);
+    z-index: -1;
+    transition: opacity 100ms linear;
+  }
+  
+  .userNameButton:hover,
+  .userNameButton:focus {
+    color: var(--clr-bg);
+    text-shadow: none;
+  }
+  
+  .userNameButton:hover::before,
+  .userNameButton:focus::before {
+    opacity: 1;
+  }
+
+  .userNameButton:hover::after,
+  .userNameButton:focus::after {
+    opacity: 1;
+  }
+
+  .nothingUserNameButton{
+    font-size: 14;
+    position: absolute;
+    top: 7.5%;
+    left: 90%;
+    text-decoration: none;
+    background-color: black;
+    color: var(--clr-bg);
+    border: var(--clr-bg) 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+}
+
+
+
+.userNameInput {
+/* border: orange 5px solid; */
+position: absolute;
+display: flex;
+justify-content: space-evenly;
+/* bottom: 20%; */
+top: 60%;
+width: 300px;
+}
+/************************ Restart button ********************************/
+
+.restart{
+    font-size: 14;
+    position: absolute;
+    top: 7.5%;
+    right: 2%;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.25em currentColor;
+  
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+}
+
+.restart::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.25);
+    filter: blur(1em);
+    opacity: 0.7;
+  }
+
+.restart::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+    opacity: 0.2;
+    background-color: var(--clr-neon);
+    z-index: -1;
+    transition: opacity 100ms linear;
+  }
+  
+  .restart:hover,
+  .restart:focus {
+    color: var(--clr-bg);
+    text-shadow: none;
+  }
+  
+  .restart:hover::before,
+  .restart:focus::before {
+    opacity: 1;
+  }
+
+  .restart:hover::after,
+  .restart:focus::after {
+    opacity: 1;
+  }
+
+.nothingRestart{
+    font-size: 14;
+    position: absolute;
+    top: 7.5%;
+    right: 2%;
+    text-decoration: none;
+    border: var(--clr-bg) 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+    color: var(--clr-bg);
+}
+
+
+/**********************************************************************/
+
+.scoreTrack {
+    position: absolute;
+    display: flex;
+    /* border: 5px solid black; */
+    justify-content: space-around;
+    width: 500px;
+    font-size: 30px;
+    top: 15%;
+    /* margin-top: 4em; */
+}
+
+.score {
+    color: var(--clr-neon);
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+    display: flex;
+    bottom: 50px;
+}
+
+.displayWhoWon {
+    /* border: 5px solid black; */
+    width: 500px;
+    height: 50px;
+    position: absolute;
+    bottom: 78%;
+    top: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+}
+
+.displayWhoWon::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    top: 75%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.40);
+    filter: blur(1em);
+    opacity: .1;
+  }
+
 body {
-    background: #3498db;
-    padding: 3em;
-    border: 10px solid black;
-    font-family: 'Sora', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: black;
+    padding: 1em;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
 }
 
+/*********************** Text box ***************************/
 .textcomputer {
     font-size: 25px;
     word-spacing: 0.2em;
     margin: 0 auto;
-    background: #fff;
+    /* background: black; */
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
     padding: 1em;
-    border-bottom: 4px solid #0e6dad;
-    position: relative;
     line-height: 1.2em;
-    top: 800px;
-    /* right: 150px; */
     min-height: 175px;
-    min-width: 500px;
-    max-width: 900px;
+    width: 900px;
+    bottom: 5%;
+    position: fixed;
+    border-radius: 0.25em;
+
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.25em currentColor;
+
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
 }
 
-.corner {
-    position:absolute;
-    width: 100px;
-    left: -95px;
-    bottom: 50%;
-    transform: rotate(5deg);
-    padding-right: 3em;
+.textcomputer::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    top: 65%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    transform: perspective(2em) rotateX(40deg) scale(1.15, 0.40);
+    filter: blur(9em);
+    opacity: .50;
+  }
+/************************************Next button********************************************/
+.bottomNext{
+    position: absolute;
+    bottom: 10%;
+    left: 90%;
+    width: 80px;
+    cursor: pointer;
+    background: black;
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.25em currentColor;
+
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
 }
 
-/* .corner {
-    position:absolute;
-    width: 100px;
-    left: 35px;
-    bottom: 95%;
-    transform: rotate(170deg);
-} */
+.bottomNext::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
 
-/* .corner {
-    position:absolute;
-    width: 10vw;
-    right: 2vw;
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.25);
+    filter: blur(1em);
+    opacity: 0.7;
+  }
+
+.bottomNext::after {
+    content: "";
+    position: absolute;
+    top: 0;
     bottom: 0;
-    transform: translateY(80%)
-} */
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+    opacity: 0.2;
+    background-color: var(--clr-neon);
+    z-index: -1;
+    transition: opacity 100ms linear;
+  }
+  
+  .bottomNext:hover,
+  .bottomNext:focus {
+    /* color: var(--clr-bg); */
+    background-color: hsl(317 100% 54%);
+    text-shadow: none;
+  }
+  
+  .bottomNext:hover::before,
+  .bottomNext:focus::before {
+    opacity: 1;
+  }
+
+  .bottomNext:hover::after,
+  .bottomNext:focus::after {
+    opacity: 1;
+  }
+
+
+
+/************************************ Play button ********************************************/
+
+
+
+.playButton {
+    position: absolute;
+    bottom: 10%;
+    left: 88%;
+    width: 100px;
+    cursor: pointer;
+    background: black;
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.25em currentColor;
+
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+}
+
+.playButton::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.25);
+    filter: blur(1em);
+    opacity: 0.7;
+  }
+
+.playButton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+    opacity: 0.2;
+    background-color: var(--clr-neon);
+    z-index: -1;
+    transition: opacity 100ms linear;
+  }
+  
+  .playButton:hover,
+  .playButton:focus {
+    /* color: var(--clr-bg); */
+    background-color: hsl(317 100% 54%);
+    text-shadow: none;
+  }
+  
+  .playButton:hover::before,
+  .playButton:focus::before {
+    opacity: 1;
+  }
+
+  .playButton:hover::after,
+  .playButton:focus::after {
+    opacity: 1;
+  }
+
+/**************icon image************/
+/* Maybe add some more interactive things here */
+.instructionImg {
+height: 700px;
+width: 700px;
+position: absolute;
+background: rgba(49, 32, 43, 0.76);
+border: var(--clr-neon) 0.125em solid;
+bottom: 22%;
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+flex-wrap: wrap;
+
+text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.25em currentColor;
+
+box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+}
+
+.scissorimg {
+    height: 200px;
+    width: auto;
+}
+
+.scissorimg2 {
+    height: 200px;
+    width: auto;
+    margin-right: 20px;
+}
+
+.rockimg {
+    margin-top: 20px;
+    height: 145px;
+    width: auto;
+}
+
+.rockimg2 {
+    height: 145px;
+    width: auto;
+}
+
+.paperimg {
+    height: 160px;
+    width: auto;
+}
+
+.paperimg2 {
+    height: 160px;
+    width: auto;
+}
+
+.arrow1 {
+    height: 130px;
+    margin-top: 25px;
+    margin-left: 40px;
+}
+
+.arrow2 {
+    height: 130px;
+    margin-right: 30px;
+    margin-top: 15px;
+}
+
+.arrow3 {
+    height: 130px;
+}
+
+/************************ Gameplay time **************/
+.gameplay {
+    display: flex;
+    /* flex-direction: row-reverse; */
+    /* border: 5px solid black; */
+    height: 700px;
+    width: 700px;
+    margin: 50px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 100px;
+    position: absolute;
+    top: 17%;
+}
+
+.weaponIcon {
+    /* position: absolute; */
+    /* border: 5px solid green; */
+    height: 700px;
+    width: auto;
+    /* top: 375px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* left: 150px; */
+}
+
+/********************** computer neon sqaure ************************/
+.computerIcon {
+    height: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.25em currentColor;
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+    position: relative;
+}
+
+.computerIcon::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    top: 55%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    transform: perspective(3em) rotateX(40deg) scale(1, 0.40);
+    filter: blur(1em);
+    opacity: .1;
+  }
+/*******************************************************************/
+
+
+.clickRock {
+    height: 145px;
+    width: auto;
+}
+
+.clickPaper {
+    height: 160px;
+    width: auto;
+}
+
+.clickScissor {
+    height: 200px;
+    width: auto;
+}
+
+
+.glow {
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.25em currentColor;
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+    position: relative;
+}
+
+.computerRock {
+    position: absolute;
+    height: 145px;
+    width: auto;
+}
+
+.computerPaper {
+    position: absolute;
+    height: 160px;
+    width: auto;
+}
+
+.computerScissor {
+    position: absolute;
+    height: 200px;
+    width: auto;
+}
+
+.userLabel {
+    display: flex;
+    justify-content: center;
+    color: var(--clr-neon);
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+}
+
+.computerLabel {
+    text-align: center;
+    margin-top: 25px;
+    color: var(--clr-neon);
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+}
+
+.brokenLight{
+    position: absolute;
+    width: 1px;
+    height: 80px;
+    top: 59%;
+    left: 100%;
+    border-radius: 0.25em;
+    color: var(--clr-bg);
+    border: var(--clr-bg) .075em solid;
+    text-shadow: 0 0 0.125em rgb(0, 0, 0), 0 0 0.25em black;
+    box-shadow: inset 0 0 0.5em 0 var(--clr-bg), 0 0 0.5em 0 var(--clr-bg);
+}
+/************************ Display results *************************/
+.offDisplayChat {
+    font-size: 25px;
+    word-spacing: 0.2em;
+    margin: 0 auto;
+    color: var(--clr-neon);
+    border: var(--clr-bg) 0.125em solid;
+    padding: 1em;
+    line-height: 1.2em;
+    min-height: 175px;
+    border-radius: 0.25em;
+    width: 900px;
+    bottom: 5%;
+    position: absolute;
+}
+
+  .confirmWin {
+    position: absolute;
+    bottom: 10%;
+    left: 88%;
+    width: 100px;
+    cursor: pointer;
+    background: black;
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.25em currentColor;
+
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+  }
+
+  .confirmWin::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.25);
+    filter: blur(1em);
+    opacity: 0.7;
+  }
+
+.confirmWin::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+    opacity: 0.2;
+    background-color: var(--clr-neon);
+    z-index: -1;
+    transition: opacity 100ms linear;
+  }
+  
+  .confirmWin:hover,
+  .confirmWin:focus {
+    color: var(--clr-bg);
+    text-shadow: none;
+  }
+  
+  .confirmWin:hover::before,
+  .confirmWin:focus::before {
+    opacity: 1;
+  }
+
+  .confirmWin:hover::after,
+  .confirmWin:focus::after {
+    opacity: 1;
+  }
+
+.coverScreen {
+    position: fixed;
+    height: 78%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.464);
+}
+
+.confirmOff {
+    position: absolute;
+    bottom: 8%;
+    left: 88%;
+    width: 100px;
+    text-decoration: none;
+    background-color: black;
+    color: var(--clr-bg);
+    border: var(--clr-bg) 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+}
